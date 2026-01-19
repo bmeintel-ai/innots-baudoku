@@ -78,9 +78,11 @@ const App: React.FC = () => {
     <div className="flex min-h-screen bg-slate-50">
       <div className="flex-1 flex flex-col">
         <TopBar  currentPage={currentPage} setPage={setCurrentPage} />
+              <main className="pt-20">{/* Offset for fixed TopBar */}
         <main className="flex-1 transition-all duration-300">
           {renderPage()}
         </main>
+                      </main>
       </div>
     </div>
   );
