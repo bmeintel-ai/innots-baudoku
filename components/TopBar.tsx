@@ -1,31 +1,91 @@
-
 import React from 'react';
+import { Page } from '../types';
 
-const TopBar: React.FC = () => {
+interface TopBarProps {
+  currentPage: Page;
+  setPage: (page: Page) => void;
+}
+
+const TopBar: React.FC<TopBarProps> = ({ currentPage, setPage }) => {
   return (
-    <header className="h-16 bg-white border-b border-slate-200 fixed top-0 right-0 left-64 z-40 flex items-center justify-between px-8">
-      <div className="relative w-96">
-        <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        <input
-          type="text"
-          placeholder="Suche nach Baustellen, Personen, Dokumenten..."
-          className="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-orange-500 transition-all outline-none text-sm"
-        />
-      </div>
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-slate-200 z-50">
+      <div className="flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">I</span>
+            </div>
+            <span className="font-bold text-xl">Innots Baudoku</span>
+          </div>
 
-      <div className="flex items-center gap-4">
-        <button className="relative p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
-          <i className="far fa-bell text-xl"></i>
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-        </button>
-        <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
-          <i className="far fa-envelope text-xl"></i>
-        </button>
-        <div className="h-8 w-px bg-slate-200 mx-2"></div>
-        <button className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors">
-          <i className="fas fa-plus"></i>
-          Neues Projekt
-        </button>
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center gap-2">
+            <button
+              onClick={() => setPage('dashboard')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === 'dashboard'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              📊 Dashboard
+            </button>
+            <button
+              onClick={() => setPage('sites')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === 'sites'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              🏗️ Projekte
+            </button>
+            <button
+              onClick={() => setPage('team')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === 'team'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              👥 Team
+            </button>
+            <button
+              onClick={() => setPage('measures')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === 'measures'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              📋 Maßnahmen
+            </button>
+          </nav>
+        </div>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          {/* Search */}
+          <div className="hidden sm:block relative w-64">
+            <input
+              type="text"
+              placeholder="Suche nach Baustellen, Personen, Dokumenten..."
+              className="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-orange-500 transition-all outline-none text-sm"
+            />
+          </div>
+
+          {/* Icons */}
+          <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
+            🔔
+          </button>
+          <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
+            ✉️
+          </button>
+          <button className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors">
+            + Neues Projekt
+          </button>
+        </div>
       </div>
     </header>
   );
