@@ -1,0 +1,8 @@
+{
+  "name": "Innots Baudoku",
+  "description": "Ein professionelles Dashboard für die Baudokumentation mit Projektübersicht, Baustellenverwaltung, Teammanagement und Maßnahmen-Tracker.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
