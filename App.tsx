@@ -6,6 +6,7 @@ import ConstructionSites from './pages/ConstructionSites';
 import TeamManagement from './pages/TeamManagement';
 import MeasuresTracker from './pages/MeasuresTracker';
 import ProjectDetail from './pages/ProjectDetail';
+import SteinteppichFunnel from './pages/SteinteppichFunnel';
 import { Page, ConstructionSite, DailyReport } from './types';
 import { INITIAL_SITES, INITIAL_TEAM, INITIAL_MEASURES } from './constants';
 
@@ -54,6 +55,8 @@ const App: React.FC = () => {
       case 'team':
         return <TeamManagement team={team} />;
       case 'tracker':
+            case 'steinteppich':
+      return <SteinteppichFunnel />;
         return <MeasuresTracker measures={measures} sites={sites} />;
       case 'project-detail':
         const site = sites.find(s => s.id === selectedProjectId);
